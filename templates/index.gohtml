@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Contact Us</title>
+</head>
+<body>
+
+{{if .Errors}}
+<ul>
+{{range $key, $val := .Errors}}
+  <li>{{$val}}</li>
+{{end}}
+</ul>
+{{end}}
+
+{{if .SentFlag}}
+<h2>Your message was sent. Thank you for contacting us.</h2>
+{{end}}
+
+<h1>Contact Us</h1><br>
+
+<form action="/" id="contactFrm" method="POST">
+  *First Name:<br>
+  <input type="text" name="frmFirstName" {{if .FirstName}} value="{{.FirstName}}" {{end}} placeholder="John"><br><br>
+  *Last Name:<br>
+  <input type="text" name="frmLastName" {{if .LastName}} value="{{.LastName}}" {{end}} placeholder="Doe"><br><br>
+  *Email:<br>
+  <input type="email" name="frmEmail" {{if .Email}} value="{{.Email}}" {{end}} placeholder="John@Doe.com.au"><br><br>
+  Phone:<br>
+  <input type="text" name="frmPhone" {{if .Phone}} value="{{.Phone}}" {{end}} placeholder="041234567"><br><br>
+  *Subject:<br>
+  <input type="text" name="frmSubject" {{if .Subject}} value="{{.Subject}}" {{end}} placeholder="Email Subject"><br><br>
+  <textarea name="frmBody" form="contactFrm" rows="4" cols="50" placeholder="Enter email body here.">{{if .Body}} {{.Body}} {{end}}</textarea><br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+</body>
+</html> 
